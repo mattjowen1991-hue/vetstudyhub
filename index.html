@@ -1,0 +1,1283 @@
+
+Can you create me a HTML based mock up of a wesbite like VetPrep? My sister has just passed her vet school course and wants to create a website to help others prep for vetinary exams (just a POC for now will do)
+
+https://www.vetprep.com/index.jsp
+
+16:16
+Let me first check out the VetPrep site for reference, then read the frontend design skill.
+
+
+Searched the web, viewed a file
+
+Now let me build this. Congrats to your sister! I'll create a polished, professional vet exam prep site mockup.
+
+
+Created a file, read a file
+
+Create a VetPrep-inspired veterinary exam preparation website mockup
+vetprep-mockup.html
+
+Presented file
+Done
+Congrats to your sister! 🎉 Here's the VetAce mockup — a full landing page POC inspired by VetPrep's structure but with its own identity. It includes:
+
+Hero section with an interactive sample question card and floating stats
+Stats bar with key metrics
+6 feature cards (timed exams, PowerPages, audio lectures, analytics, review mode, ask an expert)
+How It Works — 4-step visual process
+3-tier pricing (Starter, Pro, Team) with a highlighted popular plan
+Testimonials from fictional vet students
+Daily Dose email signup CTA
+Full footer with navigation
+Everything's responsive and has scroll animations, hover effects, and a natural forest-green/gold/cream colour palette that feels professional without being clinical. She can use this as a starting point to show investors, classmates, or collaborators what the final product could look like!
+
+Vetprep mockup
+Code · HTML 
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Vetprep mockup · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VetAce — Ace Your Veterinary Exams</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --forest-light: #245038;
+    --sage: #7a9e7e;
+    --sage-light: #a8c5ab;
+    --cream: #faf8f3;
+    --cream-dark: #f0ebe0;
+    --gold: #d4a853;
+    --gold-light: #f0d48a;
+    --coral: #e87461;
+    --text-dark: #1a2a1f;
+    --text-mid: #4a5d50;
+    --text-light: #7a8d80;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(26,58,42,0.06);
+    --shadow-md: 0 8px 30px rgba(26,58,42,0.1);
+    --shadow-lg: 0 20px 60px rgba(26,58,42,0.15);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Grain overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 48px;
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(250,248,243,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(26,58,42,0.06);
+    transition: all 0.3s ease;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem; color: var(--forest);
+  }
+  .nav-logo .logo-icon {
+    width: 38px; height: 38px;
+    background: var(--forest);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500; color: var(--text-mid);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .btn-login {
+    font-size: 0.88rem; font-weight: 600; color: var(--forest);
+    padding: 8px 20px; border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .btn-login:hover { background: rgba(26,58,42,0.06); }
+  .btn-primary {
+    font-size: 0.88rem; font-weight: 600; color: var(--cream);
+    background: var(--forest);
+    padding: 10px 24px; border-radius: 10px;
+    border: none; cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(26,58,42,0.2);
+  }
+  .btn-primary:hover {
+    background: var(--forest-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(26,58,42,0.25);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 160px 48px 100px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; top: 0; right: -100px; bottom: 0;
+    width: 55%;
+    background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--forest-light) 100%);
+    border-radius: 0 0 0 120px;
+    opacity: 0.12;
+  }
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(26,58,42,0.06);
+  }
+  .hero-bg-circle:nth-child(2) { width: 600px; height: 600px; top: -100px; right: -100px; }
+  .hero-bg-circle:nth-child(3) { width: 400px; height: 400px; top: 50px; right: 50px; }
+  .hero-bg-circle:nth-child(4) { width: 200px; height: 200px; top: 200px; right: 200px; }
+  .hero-content {
+    max-width: 1280px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+  .hero-text { animation: fadeInUp 0.8s ease; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white);
+    padding: 6px 16px 6px 8px;
+    border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--forest);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 28px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .hero h1 {
+    font-size: 3.8rem;
+    line-height: 1.1;
+    color: var(--forest);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage);
+    position: relative;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute; bottom: 4px; left: 0; right: 0;
+    height: 12px;
+    background: var(--gold-light);
+    opacity: 0.4;
+    border-radius: 4px;
+    z-index: -1;
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-hero {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 32px;
+    font-size: 1rem; font-weight: 700;
+    border-radius: 14px; border: none; cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.3s ease;
+  }
+  .btn-hero-primary {
+    background: var(--forest);
+    color: var(--cream);
+    box-shadow: 0 8px 32px rgba(26,58,42,0.25);
+  }
+  .btn-hero-primary:hover {
+    background: var(--forest-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(26,58,42,0.3);
+  }
+  .btn-hero-secondary {
+    background: var(--white);
+    color: var(--forest);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-hero-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-hero svg { width: 18px; height: 18px; }
+
+  /* Hero visual card */
+  .hero-visual {
+    animation: fadeInUp 0.8s ease 0.15s backwards;
+    position: relative;
+  }
+  .hero-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--forest), var(--sage), var(--gold));
+  }
+  .hero-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .hero-card-label {
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--sage);
+  }
+  .hero-card-count {
+    font-size: 0.82rem; color: var(--text-light);
+  }
+  .hero-card-question {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--forest);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .hero-card-options { display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 2px solid var(--cream-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.92rem;
+    color: var(--text-mid);
+  }
+  .option:hover { border-color: var(--sage-light); background: rgba(122,158,126,0.04); }
+  .option.correct {
+    border-color: var(--sage);
+    background: rgba(122,158,126,0.08);
+    color: var(--forest);
+    font-weight: 600;
+  }
+  .option-letter {
+    width: 32px; height: 32px; min-width: 32px;
+    border-radius: 8px;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem;
+    color: var(--text-light);
+    transition: all 0.2s;
+  }
+  .option.correct .option-letter {
+    background: var(--forest);
+    color: var(--gold);
+  }
+
+  /* Floating stats */
+  .float-stat {
+    position: absolute;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px 20px;
+    box-shadow: var(--shadow-md);
+    display: flex; align-items: center; gap: 12px;
+    animation: float 6s ease-in-out infinite;
+  }
+  .float-stat-1 { top: -20px; right: -30px; animation-delay: 0s; }
+  .float-stat-2 { bottom: 40px; left: -40px; animation-delay: 2s; }
+  .float-stat .stat-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .float-stat .stat-icon.green { background: rgba(122,158,126,0.15); }
+  .float-stat .stat-icon.gold { background: rgba(212,168,83,0.15); }
+  .float-stat .stat-num { font-size: 1.2rem; font-weight: 800; color: var(--forest); }
+  .float-stat .stat-label { font-size: 0.72rem; color: var(--text-light); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    padding: 60px 48px;
+    background: var(--forest);
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(122,158,126,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(212,168,83,0.1) 0%, transparent 60%);
+  }
+  .stats-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+    position: relative; z-index: 2;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .stat-desc {
+    font-size: 0.85rem;
+    color: rgba(250,248,243,0.6);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    padding: 120px 48px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 620px; margin: 0 auto 72px;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-size: 2.6rem;
+    color: var(--forest);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .section-header p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 36px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(26,58,42,0.04);
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .feature-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:nth-child(1)::after { background: linear-gradient(90deg, var(--forest), var(--sage)); }
+  .feature-card:nth-child(2)::after { background: linear-gradient(90deg, var(--sage), var(--gold)); }
+  .feature-card:nth-child(3)::after { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+  .feature-card:nth-child(4)::after { background: linear-gradient(90deg, var(--coral), var(--forest)); }
+  .feature-card:nth-child(5)::after { background: linear-gradient(90deg, var(--forest), var(--gold)); }
+  .feature-card:nth-child(6)::after { background: linear-gradient(90deg, var(--sage), var(--coral)); }
+  .feature-card:hover::after { opacity: 1; }
+  .feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+  }
+  .fi-green { background: rgba(122,158,126,0.12); }
+  .fi-gold { background: rgba(212,168,83,0.12); }
+  .fi-coral { background: rgba(232,116,97,0.12); }
+  .fi-forest { background: rgba(26,58,42,0.08); }
+  .feature-card h3 {
+    font-size: 1.25rem;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works {
+    padding: 100px 48px 120px;
+    background: var(--white);
+    position: relative;
+  }
+  .how-inner { max-width: 1280px; margin: 0 auto; }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 12.5%; right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--sage-light), var(--gold-light), var(--sage-light));
+    opacity: 0.5;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .step-num {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 3px solid var(--sage-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--forest);
+    transition: all 0.3s;
+  }
+  .step:hover .step-num {
+    background: var(--forest);
+    color: var(--gold);
+    border-color: var(--forest);
+    transform: scale(1.1);
+  }
+  .step h3 {
+    font-size: 1.15rem;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    padding: 120px 48px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(26,58,42,0.06);
+    transition: all 0.4s;
+    position: relative;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .price-card.featured {
+    background: var(--forest);
+    border-color: transparent;
+    color: var(--cream);
+    transform: scale(1.04);
+    box-shadow: var(--shadow-lg);
+  }
+  .price-card.featured:hover { transform: scale(1.04) translateY(-4px); }
+  .price-card.featured .price-tag { color: var(--gold); }
+  .price-card.featured .price-desc { color: rgba(250,248,243,0.6); }
+  .price-card.featured .price-feature { color: rgba(250,248,243,0.8); border-color: rgba(250,248,243,0.1); }
+  .price-card.featured .price-feature svg { color: var(--gold); }
+  .popular-badge {
+    position: absolute; top: -12px; right: 24px;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 100px;
+  }
+  .price-name {
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+  .price-card.featured .price-name { color: var(--sage-light); }
+  .price-tag {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+  .price-tag span { font-size: 1rem; color: var(--text-light); font-family: 'Plus Jakarta Sans', sans-serif; }
+  .price-desc {
+    font-size: 0.85rem; color: var(--text-light);
+    margin-bottom: 28px;
+  }
+  .price-features { list-style: none; margin-bottom: 32px; }
+  .price-feature {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    font-size: 0.88rem; color: var(--text-mid);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .price-feature svg { width: 18px; height: 18px; color: var(--sage); flex-shrink: 0; }
+  .btn-price {
+    display: block; width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid var(--forest);
+    background: transparent;
+    color: var(--forest);
+    font-size: 0.92rem; font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .btn-price:hover {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .price-card.featured .btn-price {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .price-card.featured .btn-price:hover {
+    background: var(--gold);
+    color: var(--forest);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 100px 48px 120px;
+    background: var(--forest);
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 0%, rgba(122,158,126,0.12) 0%, transparent 50%);
+  }
+  .test-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+  .testimonials .section-tag { color: var(--gold); }
+  .testimonials .section-header h2 { color: var(--cream); }
+  .testimonials .section-header p { color: rgba(250,248,243,0.5); }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .test-card {
+    background: rgba(250,248,243,0.06);
+    border: 1px solid rgba(250,248,243,0.08);
+    border-radius: var(--radius);
+    padding: 32px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+  .test-card:hover {
+    background: rgba(250,248,243,0.1);
+    transform: translateY(-4px);
+  }
+  .test-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 3px; }
+  .test-text {
+    font-size: 0.95rem;
+    color: rgba(250,248,243,0.85);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .test-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .test-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage), var(--forest-light));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream);
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .test-name { font-weight: 600; color: var(--cream); font-size: 0.88rem; }
+  .test-role { font-size: 0.75rem; color: rgba(250,248,243,0.4); }
+
+  /* ── DAILY DOSE / CTA ── */
+  .daily-dose {
+    padding: 100px 48px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .dose-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: var(--shadow-lg);
+  }
+  .dose-content { padding: 64px; }
+  .dose-content .section-tag { margin-bottom: 16px; }
+  .dose-content h2 {
+    font-size: 2.2rem;
+    color: var(--forest);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .dose-content p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .email-form {
+    display: flex; gap: 12px;
+  }
+  .email-input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--cream-dark);
+    font-size: 0.92rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+    background: var(--cream);
+  }
+  .email-input:focus { border-color: var(--sage); }
+  .email-input::placeholder { color: var(--text-light); }
+  .dose-visual {
+    background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 40%, var(--forest-light) 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dose-visual::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .dose-visual::after {
+    content: '';
+    position: absolute;
+    width: 450px; height: 450px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .dose-icon-group {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    position: relative; z-index: 2;
+  }
+  .dose-big-icon {
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .dose-label {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .dose-sublabel {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 64px 48px 32px;
+    background: var(--text-dark);
+    color: rgba(250,248,243,0.5);
+  }
+  .footer-inner {
+    max-width: 1280px; margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .nav-logo { margin-bottom: 16px; }
+  .footer-brand .nav-logo .logo-icon { background: rgba(250,248,243,0.1); color: var(--gold); }
+  .footer-brand .nav-logo { color: var(--cream); }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 300px; }
+  .footer-col h4 {
+    color: var(--cream);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--sage-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(250,248,243,0.08);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-content { grid-template-columns: 1fr; gap: 48px; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-visual { max-width: 500px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .steps-grid::before { display: none; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .price-card.featured { transform: none; }
+    .test-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .dose-card { grid-template-columns: 1fr; }
+    .dose-visual { min-height: 260px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 120px 20px 60px; }
+    .hero h1 { font-size: 2.2rem; }
+    .features, .pricing, .daily-dose { padding: 80px 20px; }
+    .how-it-works { padding: 80px 20px; }
+    .stats-bar { padding: 40px 20px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-hero { justify-content: center; }
+    .email-form { flex-direction: column; }
+    .dose-content { padding: 36px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .float-stat { display: none; }
+    .testimonials { padding: 80px 20px; }
+    footer { padding: 48px 20px 24px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">VA</div>
+    VetAce
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Reviews</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#" class="btn-login">Log In</a>
+    <button class="btn-primary">Start Free Trial</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> Trusted by 12,000+ vet students</div>
+      <h1>Your Path to<br>Passing the <em>NAVLE®</em></h1>
+      <p class="hero-sub">Expert-crafted questions, comprehensive study tools, and personalised analytics — everything you need to ace your veterinary licensing exam with confidence.</p>
+      <div class="hero-actions">
+        <button class="btn-hero btn-hero-primary">
+          Get Started Free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-hero btn-hero-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" opacity="0.15"/></svg>
+          Take the Tour
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <span class="hero-card-label">📋 Practice Question</span>
+          <span class="hero-card-count">Q.42 of 360</span>
+        </div>
+        <div class="hero-card-question">
+          A 4-year-old Golden Retriever presents with acute vomiting, anorexia, and abdominal pain. Radiographs reveal a gastric foreign body. What is the most appropriate next step?
+        </div>
+        <div class="hero-card-options">
+          <div class="option"><span class="option-letter">A</span> Induce emesis with apomorphine</div>
+          <div class="option correct"><span class="option-letter">B</span> Perform gastrotomy for foreign body removal</div>
+          <div class="option"><span class="option-letter">C</span> Administer activated charcoal</div>
+          <div class="option"><span class="option-letter">D</span> Start conservative fluid therapy and monitor</div>
+        </div>
+      </div>
+      <div class="float-stat float-stat-1">
+        <div class="stat-icon green">📈</div>
+        <div><div class="stat-num">94%</div><div class="stat-label">Avg. Pass Rate</div></div>
+      </div>
+      <div class="float-stat float-stat-2">
+        <div class="stat-icon gold">🏆</div>
+        <div><div class="stat-num">8,400+</div><div class="stat-label">Questions</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number">12,000+</div>
+      <div class="stat-desc">Students Prepared</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">8,400+</div>
+      <div class="stat-desc">Expert Questions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">94%</div>
+      <div class="stat-desc">Pass Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">30+</div>
+      <div class="stat-desc">Subject Areas Covered</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features fade-in" id="features">
+  <div class="section-header">
+    <span class="section-tag">Everything You Need</span>
+    <h2>Study Smarter, Not Harder</h2>
+    <p>A complete exam prep platform designed by veterinarians, for future veterinarians.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon fi-green">🎯</div>
+      <h3>NAVLE®-Style Exams</h3>
+      <p>Timed practice exams that mirror the real test experience, with calculator, markup tools, and a comprehensive review page.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-gold">📚</div>
+      <h3>PowerPages™</h3>
+      <p>Concise, expert-written summaries of key veterinary topics for rapid and efficient review before exam day.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-coral">🎧</div>
+      <h3>Audio Lectures</h3>
+      <p>Stream bite-sized audio reviews with accompanying slides — study on the go during rotations or commute.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-forest">📊</div>
+      <h3>Performance Analytics</h3>
+      <p>Detailed stats and visual dashboards track your progress and identify weak areas to focus your study time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-green">🔄</div>
+      <h3>Endless Review Mode</h3>
+      <p>The "Pile of Done" serves up never-ending question reviews in a slideshow format to keep your knowledge fresh.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-gold">💬</div>
+      <h3>Ask an Expert</h3>
+      <p>Stuck on a tricky concept? Submit questions directly to our team of veterinary specialists for clear explanations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works fade-in" id="how">
+  <div class="how-inner">
+    <div class="section-header">
+      <span class="section-tag">Simple Process</span>
+      <h2>How VetAce Works</h2>
+      <p>Four steps to exam confidence. Start your journey today.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Sign Up</h3>
+        <p>Create your free account and choose a study plan that fits your exam timeline.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Learn</h3>
+        <p>Dive into PowerPages and audio lectures covering all key NAVLE® subjects.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Practice</h3>
+        <p>Test yourself with thousands of expert-crafted questions and timed exams.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Pass</h3>
+        <p>Walk into exam day with confidence, backed by data-driven preparation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing fade-in" id="pricing">
+  <div class="section-header">
+    <span class="section-tag">Plans & Pricing</span>
+    <h2>Choose Your Study Plan</h2>
+    <p>Flexible options to match your exam prep timeline, all backed by our pass guarantee.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-tag">£49<span>/90 days</span></div>
+      <div class="price-desc">Perfect for early starters</div>
+      <ul class="price-features">
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          4,000+ practice questions
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Timed mock exams
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Basic performance stats
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Mobile & desktop access
+        </li>
+      </ul>
+      <button class="btn-price">Get Started</button>
+    </div>
+    <div class="price-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="price-name">Pro</div>
+      <div class="price-tag">£89<span>/180 days</span></div>
+      <div class="price-desc">The complete exam prep solution</div>
+      <ul class="price-features">
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          8,400+ practice questions
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Timed mock exams + review
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          PowerPages™ & audio lectures
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Advanced analytics dashboard
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Ask an Expert access
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Pass Guarantee
+        </li>
+      </ul>
+      <button class="btn-price">Get Started</button>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Team</div>
+      <div class="price-tag">£69<span>/seat · 180 days</span></div>
+      <div class="price-desc">For study groups & universities</div>
+      <ul class="price-features">
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Everything in Pro
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Group admin dashboard
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Cohort progress tracking
+        </li>
+        <li class="price-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Volume discounts available
+        </li>
+      </ul>
+      <button class="btn-price">Contact Sales</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials fade-in" id="testimonials">
+  <div class="test-inner">
+    <div class="section-header">
+      <span class="section-tag">Success Stories</span>
+      <h2>Trusted by Vet Students Everywhere</h2>
+      <p>Join thousands who've passed their exams with VetAce</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"VetAce was an absolute game-changer for my NAVLE prep. The practice questions felt incredibly close to the real exam, and the analytics helped me focus on my weak areas."</p>
+        <div class="test-author">
+          <div class="test-avatar">SB</div>
+          <div><div class="test-name">Sarah B.</div><div class="test-role">University of Edinburgh, Class of 2025</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The audio lectures were perfect for studying during my clinical rotations. I'd listen between cases and it made such a difference. Passed first time!"</p>
+        <div class="test-author">
+          <div class="test-avatar">JM</div>
+          <div><div class="test-name">James M.</div><div class="test-role">RVC London, Class of 2024</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"I tried other prep services but VetAce was the only one where I felt genuinely confident walking into the exam. The PowerPages are brilliantly written."</p>
+        <div class="test-author">
+          <div class="test-avatar">KL</div>
+          <div><div class="test-name">Keeva L.</div><div class="test-role">University College Dublin, Class of 2025</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY DOSE CTA -->
+<section class="daily-dose fade-in">
+  <div class="dose-card">
+    <div class="dose-content">
+      <span class="section-tag">Free Daily Question</span>
+      <h2>Start Prepping Today — For Free</h2>
+      <p>Get a veterinary exam question delivered to your inbox every weekday. Build your knowledge one question at a time, completely free.</p>
+      <div class="email-form">
+        <input type="email" class="email-input" placeholder="Enter your email address">
+        <button class="btn-primary" style="padding: 14px 28px; font-size: 0.92rem;">Subscribe</button>
+      </div>
+    </div>
+    <div class="dose-visual">
+      <div class="dose-icon-group">
+        <div class="dose-big-icon">🩺</div>
+        <div class="dose-label">Daily Dose of VetAce</div>
+        <div class="dose-sublabel">One question a day keeps exam stress away</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="logo-icon">VA</div>
+          VetAce
+        </div>
+        <p>Built by vets, for future vets. The smarter way to prepare for your veterinary licensing exams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Question Bank</a></li>
+          <li><a href="#">Mobile App</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Study Guides</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Pass Guarantee</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VetAce. All rights reserved.</span>
+      <span>NAVLE® is a registered trademark of the ICVA. VetAce is not affiliated with the ICVA.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Interactive question card
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      // Show correct answer
+      document.querySelectorAll('.option').forEach(o => {
+        if (o.classList.contains('correct')) {
+          o.style.borderColor = '#7a9e7e';
+          o.style.background = 'rgba(122,158,126,0.08)';
+        }
+      });
+    });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Nav background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 20px rgba(26,58,42,0.08)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
+
