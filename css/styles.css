@@ -403,55 +403,46 @@ nav {
 .float-stat .stat-label { font-size: 0.72rem; color: var(--text-light); }
 
 
-/* ── STATS BAR ── */
-.stats-bar {
-  padding: 60px 48px;
+/* ── FEATURES SECTION (combined) ── */
+.features-section {
+  position: relative;
+}
+.features-header-band {
+  padding: 80px 48px 60px;
   background: var(--forest);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
-.stats-bar::before {
+.features-header-band::before {
   content: '';
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at 20% 50%, rgba(122,158,126,0.15) 0%, transparent 60%),
               radial-gradient(ellipse at 80% 50%, rgba(212,168,83,0.1) 0%, transparent 60%);
 }
-.stats-inner {
-  max-width: 1280px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+.features-header-inner {
   position: relative; z-index: 2;
+  max-width: 620px; margin: 0 auto;
 }
-.stat-item { text-align: center; }
-.stat-icon-wrap {
-  width: 56px; height: 56px;
-  border-radius: 14px;
-  background: rgba(250,248,243,0.08);
-  border: 1px solid rgba(250,248,243,0.1);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 14px;
-  color: var(--gold);
+.features-header-inner h2 {
+  font-size: 2.6rem;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.15;
 }
-.stat-number {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.3rem;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-.stat-desc {
-  font-size: 0.82rem;
+.features-header-inner p {
+  font-size: 1.05rem;
   color: rgba(250,248,243,0.55);
-  letter-spacing: 0.02em;
+  line-height: 1.7;
 }
-
-
-/* ── FEATURES ── */
-.features {
-  padding: 120px 48px;
-  max-width: 1280px; margin: 0 auto;
+.features-cards-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px 100px;
 }
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 .feature-card {
@@ -477,8 +468,6 @@ nav {
 .feature-card:nth-child(2)::after { background: linear-gradient(90deg, var(--sage), var(--gold)); }
 .feature-card:nth-child(3)::after { background: linear-gradient(90deg, var(--gold), var(--coral)); }
 .feature-card:nth-child(4)::after { background: linear-gradient(90deg, var(--coral), var(--forest)); }
-.feature-card:nth-child(5)::after { background: linear-gradient(90deg, var(--forest), var(--gold)); }
-.feature-card:nth-child(6)::after { background: linear-gradient(90deg, var(--sage), var(--coral)); }
 .feature-card:hover::after { opacity: 1; }
 .feature-icon {
   width: 52px; height: 52px;
@@ -487,10 +476,10 @@ nav {
   font-size: 1.4rem;
   margin-bottom: 22px;
 }
-.fi-green { background: rgba(122,158,126,0.12); }
-.fi-gold { background: rgba(212,168,83,0.12); }
-.fi-coral { background: rgba(232,116,97,0.12); }
-.fi-forest { background: rgba(26,58,42,0.08); }
+.fi-green { background: rgba(122,158,126,0.12); color: var(--sage); }
+.fi-gold { background: rgba(212,168,83,0.12); color: var(--gold); }
+.fi-coral { background: rgba(232,116,97,0.12); color: var(--coral); }
+.fi-forest { background: rgba(26,58,42,0.08); color: var(--forest); }
 .feature-card h3 {
   font-size: 1.25rem;
   color: var(--forest);
