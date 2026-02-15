@@ -48,7 +48,9 @@
   /* Stats Bar */
   .stats-bar { padding: 36px 20px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .stat-number { font-size: 2rem; }
+  .stat-icon-wrap { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 10px; }
+  .stat-icon-wrap svg { width: 24px; height: 24px; }
+  .stat-number { font-size: 1.1rem; }
   .stat-desc { font-size: 0.75rem; }
 
   /* Section headers */
@@ -131,7 +133,7 @@
   .hero-card-question { font-size: 0.95rem; }
   .option { padding: 10px 12px; font-size: 0.82rem; gap: 10px; }
   .section-header h2 { font-size: 1.6rem; }
-  .stat-number { font-size: 1.7rem; }
+  .stat-number { font-size: 1rem; }
   .steps-grid { grid-template-columns: 1fr; }
   .dose-content { padding: 24px; }
   .dose-content h2 { font-size: 1.4rem; }

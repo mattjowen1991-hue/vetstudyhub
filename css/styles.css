@@ -422,15 +422,24 @@ nav {
   position: relative; z-index: 2;
 }
 .stat-item { text-align: center; }
+.stat-icon-wrap {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: rgba(250,248,243,0.08);
+  border: 1px solid rgba(250,248,243,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+  color: var(--gold);
+}
 .stat-number {
   font-family: 'DM Serif Display', serif;
-  font-size: 2.8rem;
+  font-size: 1.3rem;
   color: var(--gold);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .stat-desc {
-  font-size: 0.85rem;
-  color: rgba(250,248,243,0.6);
+  font-size: 0.82rem;
+  color: rgba(250,248,243,0.55);
   letter-spacing: 0.02em;
 }
 
