@@ -224,9 +224,9 @@ nav {
 .hero-bg {
   position: absolute; top: 0; right: -100px; bottom: 0;
   width: 55%;
-  background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 50%, var(--forest-light) 100%);
+  background: url('assets/images/desk-bg.jpg') center/cover no-repeat;
   border-radius: 0 0 0 120px;
-  opacity: 0.12;
+  opacity: 0.15;
 }
 .hero-bg-circle {
   position: absolute;
@@ -323,16 +323,6 @@ nav {
 .hero-visual {
   animation: fadeInUp 0.8s ease 0.15s backwards;
   position: relative;
-}
-.hero-visual::before {
-  content: '';
-  position: absolute;
-  inset: -30px;
-  background: url('../assets/images/desk-bg.jpg') center/cover no-repeat;
-  border-radius: 28px;
-  opacity: 0.12;
-  z-index: 0;
-  filter: blur(1px);
 }
 .hero-card {
   background: var(--white);
