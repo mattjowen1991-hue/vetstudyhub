@@ -53,27 +53,30 @@ document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
  */
 document.querySelectorAll('.option').forEach(opt => {
   opt.addEventListener('click', function () {
-    // Reset all options
-    document.querySelectorAll('.option').forEach(o => {
-      o.classList.remove('selected');
-      o.style.borderColor = '';
-      o.style.background = '';
-    });
+    // Prevent re-answering once answered
+    if (document.querySelector('.option.answered')) return;
 
-    this.classList.add('selected');
+    // Mark all as answered to lock in the choice
+    document.querySelectorAll('.option').forEach(o => o.classList.add('answered'));
 
-    // Highlight correct answer
+    // Highlight the correct answer green
     document.querySelectorAll('.option').forEach(o => {
-      if (o.classList.contains('correct')) {
+      if (o.dataset.correct === 'true') {
         o.style.borderColor = '#7a9e7e';
         o.style.background = 'rgba(122,158,126,0.08)';
+        o.querySelector('.option-letter').style.background = '#1a3a2a';
+        o.querySelector('.option-letter').style.color = '#d4a853';
+        o.style.fontWeight = '600';
+        o.style.color = '#1a3a2a';
       }
     });
 
-    // Dim incorrect selection
-    if (!this.classList.contains('correct')) {
+    // If this was wrong, highlight it in coral
+    if (this.dataset.correct !== 'true') {
       this.style.borderColor = '#e87461';
       this.style.background = 'rgba(232,116,97,0.06)';
+      this.querySelector('.option-letter').style.background = '#e87461';
+      this.querySelector('.option-letter').style.color = '#ffffff';
     }
   });
 });

@@ -369,12 +369,7 @@ nav {
   color: var(--text-mid);
 }
 .option:hover { border-color: var(--sage-light); background: rgba(122,158,126,0.04); }
-.option.correct {
-  border-color: var(--sage);
-  background: rgba(122,158,126,0.08);
-  color: var(--forest);
-  font-weight: 600;
-}
+.option.answered { pointer-events: none; }
 .option-letter {
   width: 32px; height: 32px; min-width: 32px;
   border-radius: 8px;
@@ -383,10 +378,6 @@ nav {
   font-weight: 700; font-size: 0.8rem;
   color: var(--text-light);
   transition: all 0.2s;
-}
-.option.correct .option-letter {
-  background: var(--forest);
-  color: var(--gold);
 }
 
 /* Floating stat badges */
@@ -400,7 +391,7 @@ nav {
   animation: float 6s ease-in-out infinite;
 }
 .float-stat-1 { top: -20px; right: -30px; animation-delay: 0s; }
-.float-stat-2 { bottom: 40px; left: -40px; animation-delay: 2s; }
+.float-stat-2 { bottom: -30px; left: -40px; animation-delay: 2s; }
 .float-stat .stat-icon {
   width: 40px; height: 40px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
