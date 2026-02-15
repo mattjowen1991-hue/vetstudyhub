@@ -224,7 +224,7 @@ nav {
 .hero-bg {
   position: absolute; top: 0; right: -100px; bottom: 0;
   width: 55%;
-  background: url('assets/images/desk-bg.jpg') center/cover no-repeat;
+  background: url('../assets/images/desk-bg.jpg') center/cover no-repeat;
   border-radius: 0 0 0 120px;
   opacity: 0.15;
 }
