@@ -411,6 +411,49 @@ nav {
 .float-stat .stat-num { font-size: 1.2rem; font-weight: 800; color: var(--forest); }
 .float-stat .stat-label { font-size: 0.72rem; color: var(--text-light); }
 
+/* Founder photo */
+.founder-photo-wrap {
+  position: relative;
+  margin-bottom: 24px;
+}
+.founder-photo {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+.founder-caption {
+  position: absolute;
+  bottom: -14px; left: 20px; right: 20px;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.founder-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* Daily question card overlay */
+.daily-question-card {
+  position: relative;
+  margin-top: 8px;
+}
+.daily-question-card .hero-card-label {
+  color: var(--forest);
+}
+.daily-question-card .hero-card-count {
+  font-weight: 600;
+  color: var(--sage);
+}
+
 
 /* ── STATS BAR ── */
 .stats-bar {
