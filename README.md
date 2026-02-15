@@ -1,4 +1,4 @@
-# VetAce — Veterinary Exam Prep Platform
+# VetStudyHub — Veterinary Exam Prep Platform
 
 A web-based study platform to help veterinary students prepare for the NAVLE® and other licensing exams.
 

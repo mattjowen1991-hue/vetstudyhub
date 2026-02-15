@@ -1,5 +1,5 @@
 /* ============================================
-   VetAce — Main Stylesheet
+   VetStudyHub — Main Stylesheet
    ============================================ */
 
 /* ── DESIGN TOKENS ── */
@@ -123,6 +123,11 @@ nav {
   font-size: 1.1rem;
   font-weight: 700;
   font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.nav-logo .logo-img {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a {
@@ -821,6 +826,7 @@ footer {
 }
 .footer-brand .nav-logo { margin-bottom: 16px; }
 .footer-brand .nav-logo .logo-icon { background: rgba(250,248,243,0.1); color: var(--gold); }
+.footer-brand .nav-logo .logo-img { border-radius: 10px; }
 .footer-brand .nav-logo { color: var(--cream); }
 .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 300px; }
 .footer-col h4 {
