@@ -45,12 +45,6 @@
   .option-letter { width: 28px; height: 28px; min-width: 28px; font-size: 0.72rem; border-radius: 7px; }
   .float-stat { display: none; }
 
-  /* Founder photo mobile */
-  .founder-photo { max-width: 100%; border-radius: 18px; }
-  .founder-caption { bottom: -12px; left: 12px; right: 12px; padding: 10px 14px; }
-  .founder-name { font-size: 0.78rem; }
-  .daily-question-card { margin-top: 4px; }
-
   /* Stats Bar */
   .stats-bar { padding: 36px 20px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
