@@ -12,7 +12,7 @@
   .steps-grid::before { display: none; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   .price-card.featured { transform: none; }
-  .test-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
   .dose-card { grid-template-columns: 1fr; }
   .dose-visual { min-height: 260px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -75,9 +75,12 @@
   .btn-price { padding: 15px; border-radius: 12px; font-size: 0.95rem; }
 
   /* Testimonials */
-  .testimonials { padding: 72px 20px; }
-  .test-grid { grid-template-columns: 1fr; max-width: 100%; gap: 16px; }
-  .test-card { padding: 24px; border-radius: 14px; }
+  .about-section { padding: 60px 20px; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-text h2 { font-size: 1.85rem; }
+  .founder-cards-track { min-height: 480px; }
+  .founder-card { padding: 30px 24px; border-radius: 18px; }
+  .founder-portrait-wrap { width: 130px; height: 130px; }
   .test-text { font-size: 0.88rem; margin-bottom: 18px; }
   .test-avatar { width: 38px; height: 38px; font-size: 0.78rem; }
   .test-name { font-size: 0.85rem; }
@@ -108,7 +111,7 @@
   @media (hover: none) {
     .feature-card:hover { transform: none; box-shadow: none; }
     .price-card:hover { transform: none; box-shadow: none; }
-    .test-card:hover { transform: none; background: rgba(250,248,243,0.06); }
+    .founder-card:hover { transform: none; }
     .step:hover .step-num { background: var(--cream); color: var(--forest); border-color: var(--sage-light); transform: none; }
     .nav-links a:hover::after { width: 0; }
   }

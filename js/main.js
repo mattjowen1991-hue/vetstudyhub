@@ -48,9 +48,43 @@ const fadeObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
 /**
- * Interactive hero question card
- * Clicking an option reveals correct/incorrect feedback
+ * Founder carousel
+ * Swipe between founder cards
  */
+(function() {
+  const cards = document.querySelectorAll('.founder-card');
+  const dots = document.querySelectorAll('.founder-dot');
+  const prevBtn = document.getElementById('founderPrev');
+  const nextBtn = document.getElementById('founderNext');
+  if (!cards.length) return;
+
+  let current = 0;
+
+  function showCard(index) {
+    cards.forEach((c, i) => {
+      c.classList.remove('active');
+      c.style.transform = i < index ? 'translateX(-60px)' : 'translateX(60px)';
+    });
+    cards[index].classList.add('active');
+    cards[index].style.transform = 'translateX(0)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    current = index;
+  }
+
+  prevBtn.addEventListener('click', () => showCard(current === 0 ? cards.length - 1 : current - 1));
+  nextBtn.addEventListener('click', () => showCard(current === cards.length - 1 ? 0 : current + 1));
+
+  // Touch swipe support
+  let startX = 0;
+  const track = document.getElementById('founderTrack');
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? nextBtn.click() : prevBtn.click();
+    }
+  }, { passive: true });
+})();
 document.querySelectorAll('.option').forEach(opt => {
   opt.addEventListener('click', function () {
     // Prevent re-answering once answered
