@@ -561,6 +561,11 @@ nav {
   gap: 28px;
   align-items: start;
 }
+.pricing-grid-two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 860px;
+  margin: 0 auto;
+}
 .price-card {
   background: var(--white);
   border-radius: 20px;
