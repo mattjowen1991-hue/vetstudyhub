@@ -324,12 +324,23 @@ nav {
   animation: fadeInUp 0.8s ease 0.15s backwards;
   position: relative;
 }
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  background: url('../assets/images/desk-bg.jpg') center/cover no-repeat;
+  border-radius: 28px;
+  opacity: 0.12;
+  z-index: 0;
+  filter: blur(1px);
+}
 .hero-card {
   background: var(--white);
   border-radius: 24px;
   padding: 36px;
   box-shadow: var(--shadow-lg);
   position: relative;
+  z-index: 1;
   overflow: hidden;
 }
 .hero-card::before {
@@ -389,6 +400,7 @@ nav {
   box-shadow: var(--shadow-md);
   display: flex; align-items: center; gap: 12px;
   animation: float 6s ease-in-out infinite;
+  z-index: 2;
 }
 .float-stat-1 { top: -20px; right: -30px; animation-delay: 0s; }
 .float-stat-2 { bottom: -30px; left: -40px; animation-delay: 2s; }
